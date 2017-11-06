@@ -1,0 +1,20 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+	<h3>{{post.title}}</h3>
+	<h6>on {{post.date}}</h6>
+	{{post.body|safe|linebreaks}}
+	<br>
+	<h4>Comments</h4>
+	<form action="{{post.pk}}/postcomment" method="post">
+		{% csrf_token %}
+		<textarea type="text" name="Comment" rows="2" cols="50" placeholder="insert comment here..."></textarea><br>
+		<input type="submit" name="ok">
+	</form>
+	<br><br>
+	<div>
+		{% for comment in comments %}
+			<p> <strong> {{ comment.userid }} ({{comment.date}}):</strong> <br> {{ comment.body }}</p> <br>
+		{% endfor %}
+	</div>
+{% endblock %}

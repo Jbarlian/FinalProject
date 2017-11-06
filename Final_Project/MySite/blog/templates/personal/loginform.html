@@ -1,0 +1,14 @@
+{% extends "personal/header.html" %}
+
+
+
+{% block content %}
+	
+	<form action="/login" method="post">
+		{% csrf_token %}
+		Username: <input type="text" name="username"><br><br>
+		Password: <input type="password" name="password"><br><br>
+		<button type="submit" value="ok">Submit</button>
+	</form>
+
+{% endblock %}
